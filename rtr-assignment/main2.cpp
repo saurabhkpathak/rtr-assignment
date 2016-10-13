@@ -318,7 +318,7 @@ int main(int argc, char **argv) {
 	// 2. Diffuse Shader
 	// 3. Phong Shader
 	// 4. Toon Shader
-	// 5. Gooch Shader
+	// 5. Gooch Shader0
 	// 6. Glossy Shader
 	setShader(1);
 
