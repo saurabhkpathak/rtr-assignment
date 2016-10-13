@@ -58,23 +58,6 @@ void renderScene(void) {
 	glutSwapBuffers();
 }
 
-void processNormalKeys(unsigned char key, int x, int y) {
-
-	switch (key)
-	{
-	case 27: 
-		exit(0);
-	case 'a':
-		rot -= 5;
-		break;
-	case 'd':
-		rot += 5;
-		break;
-	}
-
-	glutPostRedisplay();
-}
-
 
 void setFragmentShader() {
 
@@ -270,6 +253,41 @@ void setShader(int choice) {
 	}
 }
 
+void processNormalKeys(unsigned char key, int x, int y) {
+
+	switch (key)
+	{
+	case 27: 
+		exit(0);
+	case 'a':
+		rot -= 5;
+		break;
+	case 'd':
+		rot += 5;
+		break;
+	case '1':
+		setShader(1);
+		break;
+	case '2':
+		setShader(2);
+		break;
+	case '3':
+		setShader(3);
+		break;
+	case '4':
+		setShader(4);
+		break;
+	case '5':
+		setShader(5);
+		break;
+	case '6':
+		setShader(6);
+		break;
+	}
+
+	glutPostRedisplay();
+}
+
 
 int main(int argc, char **argv) {
 	glutInit(&argc, argv);
@@ -302,7 +320,7 @@ int main(int argc, char **argv) {
 	// 4. Toon Shader
 	// 5. Gooch Shader
 	// 6. Glossy Shader
-	setShader(4);
+	setShader(1);
 
 	glutMainLoop();
 
