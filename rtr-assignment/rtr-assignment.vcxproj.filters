@@ -15,10 +15,22 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="C:\Users\pathaks\Downloads\gouraud.frag">
+    <None Include="base.vert">
       <Filter>Source Files</Filter>
     </None>
-    <None Include="C:\Users\pathaks\Downloads\base.vert">
+    <None Include="gouraud.frag">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="diffuse.vert">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="diffuse.frag">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="phong.vert">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="phong.frag">
       <Filter>Source Files</Filter>
     </None>
   </ItemGroup>

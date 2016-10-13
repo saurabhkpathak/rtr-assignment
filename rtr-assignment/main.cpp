@@ -111,7 +111,7 @@ void keyboard(unsigned char k, int x, int y)
 
 *************************************************************/
 
-void main()
+void main2()
 {
 	glutInitDisplayMode(	// initialize GLUT
 			GLUT_DOUBLE		// request memory for 2 frame buffers for animation

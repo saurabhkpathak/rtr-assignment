@@ -16,6 +16,7 @@ GLuint v,f,p;
 float lpos[4] = {1,0.5,1,0};
 float rot = 0; 
 
+
 void changeSize(int w, int h) {
 
 	// Prevent a divide by zero, when window is too short
@@ -77,33 +78,10 @@ void processNormalKeys(unsigned char key, int x, int y) {
 
 void setFragmentShader() {
 
-	char *vs = NULL,*fs = NULL;
-	f = glCreateShader(GL_FRAGMENT_SHADER);
-	
-	vs = textFileRead("base.vert");
-	fs = textFileRead("gouraud.frag");
-	
-	const char * ff = fs;
-	const char * vv = vs;
-
-	glShaderSource(f, 1, &ff, NULL);
-	
-	free(vs);free(fs);
-
-	glCompileShader(f);
-	
-	p = glCreateProgram();
-	glAttachShader(p,f);
-
-	glLinkProgram(p);
-	glUseProgram(p);
-}
-
-void setVertexShader() {
-
 	char *vs = NULL, *fs = NULL;
 
 	v = glCreateShader(GL_VERTEX_SHADER);
+	f = glCreateShader(GL_FRAGMENT_SHADER);
 
 	vs = textFileRead("base.vert");
 	fs = textFileRead("gouraud.frag");
@@ -112,20 +90,95 @@ void setVertexShader() {
 	const char * vv = vs;
 
 	glShaderSource(v, 1, &vv, NULL);
+	glShaderSource(f, 1, &ff, NULL);
 
 	free(vs); free(fs);
 
 	glCompileShader(v);
+	glCompileShader(f);
 
 	p = glCreateProgram();
-	glAttachShader(p,v);
+	glAttachShader(p, f);
+	glAttachShader(p, v);
 
 	glLinkProgram(p);
 	glUseProgram(p);
 }
 
+void setDiffuseShader() {
+	char *vs = NULL, *fs = NULL;
 
-int main2(int argc, char **argv) {
+	v = glCreateShader(GL_VERTEX_SHADER);
+	f = glCreateShader(GL_FRAGMENT_SHADER);
+
+	vs = textFileRead("diffuse.vert");
+	fs = textFileRead("diffuse.frag");
+
+	const char * ff = fs;
+	const char * vv = vs;
+
+	glShaderSource(v, 1, &vv, NULL);
+	glShaderSource(f, 1, &ff, NULL);
+
+	free(vs); free(fs);
+
+	glCompileShader(v);
+	glCompileShader(f);
+
+	p = glCreateProgram();
+	glAttachShader(p, f);
+	glAttachShader(p, v);
+
+	glLinkProgram(p);
+	glUseProgram(p);
+}
+
+void setPhongShader() {
+	char *vs = NULL, *fs = NULL;
+
+	v = glCreateShader(GL_VERTEX_SHADER);
+	f = glCreateShader(GL_FRAGMENT_SHADER);
+
+	vs = textFileRead("phong.vert");
+	fs = textFileRead("phong.frag");
+
+	const char * ff = fs;
+	const char * vv = vs;
+
+	glShaderSource(v, 1, &vv, NULL);
+	glShaderSource(f, 1, &ff, NULL);
+
+	free(vs); free(fs);
+
+	glCompileShader(v);
+	glCompileShader(f);
+
+	p = glCreateProgram();
+	glAttachShader(p, f);
+	glAttachShader(p, v);
+
+	glLinkProgram(p);
+	glUseProgram(p);
+}
+
+void setShader(int choice) {
+	switch (choice) {
+	case 1:
+		setFragmentShader();
+		break;
+	case 2:
+		setDiffuseShader();
+		break;
+	case 3:
+		setPhongShader();
+		break;
+	default:
+		setFragmentShader();
+	}
+}
+
+
+int main(int argc, char **argv) {
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
 	glutInitWindowPosition(100,100);
@@ -149,9 +202,11 @@ int main2(int argc, char **argv) {
 		printf("OpenGL 2.0 not supported\n");
 		exit(1);
 	}
-	
-	//setFragmentShader();
-	setVertexShader();
+
+	// 1: fragment Shader
+	// 2. Diffuse Shader
+	// 3. Phong Shader
+	setShader(2);
 
 	glutMainLoop();
 

@@ -147,8 +147,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <None Include="C:\Users\pathaks\Downloads\base.vert" />
-    <None Include="C:\Users\pathaks\Downloads\gouraud.frag" />
+    <None Include="base.vert" />
+    <None Include="diffuse.frag" />
+    <None Include="diffuse.vert" />
+    <None Include="gouraud.frag" />
+    <None Include="phong.frag" />
+    <None Include="phong.vert" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
