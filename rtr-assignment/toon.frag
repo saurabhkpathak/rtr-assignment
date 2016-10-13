@@ -1,25 +1,17 @@
-uniform vec4 HighlightColour;
-uniform vec4 MidColour;
-uniform vec4 ShadowColour;
-uniform float HighlightSize;
-uniform float ShadowSize;
-uniform float OutlineWidth;
-
-varying vec3 N;
-varying vec3 L;
-varying vec3 V;
+varying float intensity;
 
 void main()
-{ 
-	vec3 n = normalize(N);
-	vec3 l = normalize(L);
-	vec3 v = normalize(V);
-	
-    float lambert = dot(l,n);
-    vec4 colour = MidColour;
-    if (lambert > 1.0-HighlightSize) colour = HighlightColour;
-    if (lambert < ShadowSize) colour = ShadowColour;
-    if (dot(n,v) < OutlineWidth) colour = vec4(0,0,0,1);
+{
+	vec4 color;
+	if (intensity > 0.95)
 
-    gl_FragColor = colour;
+		color = vec4(1.0,0.5,0.5,1.0);
+	else if (intensity > 0.5)
+		color = vec4(0.6,0.3,0.3,1.0);
+	else if (intensity > 0.25)
+		color = vec4(0.4,0.2,0.2,1.0);
+	else
+		color = vec4(0.2,0.1,0.1,1.0);
+	gl_FragColor = color;
+
 }

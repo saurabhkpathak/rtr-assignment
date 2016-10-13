@@ -302,7 +302,7 @@ int main(int argc, char **argv) {
 	// 4. Toon Shader
 	// 5. Gooch Shader
 	// 6. Glossy Shader
-	setShader(6);
+	setShader(4);
 
 	glutMainLoop();
 
