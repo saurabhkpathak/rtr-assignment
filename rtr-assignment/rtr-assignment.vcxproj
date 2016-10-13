@@ -150,9 +150,15 @@
     <None Include="base.vert" />
     <None Include="diffuse.frag" />
     <None Include="diffuse.vert" />
+    <None Include="glossy.frag" />
+    <None Include="glossy.vert" />
+    <None Include="gooch.frag" />
+    <None Include="gooch.vert" />
     <None Include="gouraud.frag" />
     <None Include="phong.frag" />
     <None Include="phong.vert" />
+    <None Include="toon.frag" />
+    <None Include="toon.vert" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />

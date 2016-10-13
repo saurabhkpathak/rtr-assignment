@@ -161,6 +161,90 @@ void setPhongShader() {
 	glUseProgram(p);
 }
 
+void setToonShader() {
+	char *vs = NULL, *fs = NULL;
+
+	v = glCreateShader(GL_VERTEX_SHADER);
+	f = glCreateShader(GL_FRAGMENT_SHADER);
+
+	vs = textFileRead("toon.vert");
+	fs = textFileRead("toon.frag");
+
+	const char * ff = fs;
+	const char * vv = vs;
+
+	glShaderSource(v, 1, &vv, NULL);
+	glShaderSource(f, 1, &ff, NULL);
+
+	free(vs); free(fs);
+
+	glCompileShader(v);
+	glCompileShader(f);
+
+	p = glCreateProgram();
+	glAttachShader(p, f);
+	glAttachShader(p, v);
+
+	glLinkProgram(p);
+	glUseProgram(p);
+}
+
+void setGoochShader() {
+	char *vs = NULL, *fs = NULL;
+
+	v = glCreateShader(GL_VERTEX_SHADER);
+	f = glCreateShader(GL_FRAGMENT_SHADER);
+
+	vs = textFileRead("gooch.vert");
+	fs = textFileRead("gooch.frag");
+
+	const char * ff = fs;
+	const char * vv = vs;
+
+	glShaderSource(v, 1, &vv, NULL);
+	glShaderSource(f, 1, &ff, NULL);
+
+	free(vs); free(fs);
+
+	glCompileShader(v);
+	glCompileShader(f);
+
+	p = glCreateProgram();
+	glAttachShader(p, f);
+	glAttachShader(p, v);
+
+	glLinkProgram(p);
+	glUseProgram(p);
+}
+
+void setGlossyShader() {
+	char *vs = NULL, *fs = NULL;
+
+	v = glCreateShader(GL_VERTEX_SHADER);
+	f = glCreateShader(GL_FRAGMENT_SHADER);
+
+	vs = textFileRead("gooch.vert");
+	fs = textFileRead("gooch.frag");
+
+	const char * ff = fs;
+	const char * vv = vs;
+
+	glShaderSource(v, 1, &vv, NULL);
+	glShaderSource(f, 1, &ff, NULL);
+
+	free(vs); free(fs);
+
+	glCompileShader(v);
+	glCompileShader(f);
+
+	p = glCreateProgram();
+	glAttachShader(p, f);
+	glAttachShader(p, v);
+
+	glLinkProgram(p);
+	glUseProgram(p);
+}
+
 void setShader(int choice) {
 	switch (choice) {
 	case 1:
@@ -171,6 +255,15 @@ void setShader(int choice) {
 		break;
 	case 3:
 		setPhongShader();
+		break;
+	case 4:
+		setToonShader();
+		break;
+	case 5:
+		setGoochShader();
+		break;
+	case 6:
+		setGlossyShader();
 		break;
 	default:
 		setFragmentShader();
@@ -206,7 +299,10 @@ int main(int argc, char **argv) {
 	// 1: fragment Shader
 	// 2. Diffuse Shader
 	// 3. Phong Shader
-	setShader(2);
+	// 4. Toon Shader
+	// 5. Gooch Shader
+	// 6. Glossy Shader
+	setShader(6);
 
 	glutMainLoop();
 
