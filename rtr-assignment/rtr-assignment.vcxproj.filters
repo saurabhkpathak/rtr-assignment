@@ -21,34 +21,10 @@
     <None Include="gouraud.frag">
       <Filter>Source Files</Filter>
     </None>
-    <None Include="diffuse.vert">
+    <None Include="refraction.vert">
       <Filter>Source Files</Filter>
     </None>
-    <None Include="diffuse.frag">
-      <Filter>Source Files</Filter>
-    </None>
-    <None Include="phong.vert">
-      <Filter>Source Files</Filter>
-    </None>
-    <None Include="phong.frag">
-      <Filter>Source Files</Filter>
-    </None>
-    <None Include="toon.vert">
-      <Filter>Source Files</Filter>
-    </None>
-    <None Include="toon.frag">
-      <Filter>Source Files</Filter>
-    </None>
-    <None Include="gooch.frag">
-      <Filter>Source Files</Filter>
-    </None>
-    <None Include="gooch.vert">
-      <Filter>Source Files</Filter>
-    </None>
-    <None Include="glossy.frag">
-      <Filter>Source Files</Filter>
-    </None>
-    <None Include="glossy.vert">
+    <None Include="refraction.frag">
       <Filter>Source Files</Filter>
     </None>
   </ItemGroup>
@@ -60,6 +36,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="textfile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cubemap.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

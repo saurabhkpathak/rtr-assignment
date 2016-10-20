@@ -1,3 +1,10 @@
-﻿  main2.cpp
-  rtr-assignment.vcxproj -> U:\rtr-assignment\Debug\rtr-assignment.exe
-  rtr-assignment.vcxproj -> U:\rtr-assignment\Debug\rtr-assignment.pdb (Full PDB)
+﻿  textfile.cpp
+  main2.cpp
+d:\rtr-assignment\rtr-assignment\main2.cpp(27): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  main.cpp
+d:\rtr-assignment\rtr-assignment\main.cpp(73): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+  cubemap.cpp
+d:\rtr-assignment\rtr-assignment\cubemap.cpp(226): warning C4305: 'argument': truncation from 'double' to 'float'
+d:\rtr-assignment\rtr-assignment\cubemap.cpp(229): warning C4305: 'argument': truncation from 'double' to 'float'
+  Generating Code...
+LINK : fatal error LNK1104: cannot open file 'LIBC.lib'

@@ -66,8 +66,8 @@ void setFragmentShader() {
 	v = glCreateShader(GL_VERTEX_SHADER);
 	f = glCreateShader(GL_FRAGMENT_SHADER);
 
-	vs = textFileRead("base.vert");
-	fs = textFileRead("gouraud.frag");
+	vs = textFileRead("refraction.vert");
+	fs = textFileRead("refraction.frag");
 
 	const char * ff = fs;
 	const char * vv = vs;
@@ -88,147 +88,7 @@ void setFragmentShader() {
 	glUseProgram(p);
 }
 
-void setDiffuseShader() {
-	char *vs = NULL, *fs = NULL;
-
-	v = glCreateShader(GL_VERTEX_SHADER);
-	f = glCreateShader(GL_FRAGMENT_SHADER);
-
-	vs = textFileRead("diffuse.vert");
-	fs = textFileRead("diffuse.frag");
-
-	const char * ff = fs;
-	const char * vv = vs;
-
-	glShaderSource(v, 1, &vv, NULL);
-	glShaderSource(f, 1, &ff, NULL);
-
-	free(vs); free(fs);
-
-	glCompileShader(v);
-	glCompileShader(f);
-
-	p = glCreateProgram();
-	glAttachShader(p, f);
-	glAttachShader(p, v);
-
-	glLinkProgram(p);
-	glUseProgram(p);
-}
-
-void setPhongShader() {
-	char *vs = NULL, *fs = NULL;
-
-	v = glCreateShader(GL_VERTEX_SHADER);
-	f = glCreateShader(GL_FRAGMENT_SHADER);
-
-	vs = textFileRead("phong.vert");
-	fs = textFileRead("phong.frag");
-
-	const char * ff = fs;
-	const char * vv = vs;
-
-	glShaderSource(v, 1, &vv, NULL);
-	glShaderSource(f, 1, &ff, NULL);
-
-	free(vs); free(fs);
-
-	glCompileShader(v);
-	glCompileShader(f);
-
-	p = glCreateProgram();
-	glAttachShader(p, f);
-	glAttachShader(p, v);
-
-	glLinkProgram(p);
-	glUseProgram(p);
-}
-
-void setToonShader() {
-	char *vs = NULL, *fs = NULL;
-
-	v = glCreateShader(GL_VERTEX_SHADER);
-	f = glCreateShader(GL_FRAGMENT_SHADER);
-
-	vs = textFileRead("toon.vert");
-	fs = textFileRead("toon.frag");
-
-	const char * ff = fs;
-	const char * vv = vs;
-
-	glShaderSource(v, 1, &vv, NULL);
-	glShaderSource(f, 1, &ff, NULL);
-
-	free(vs); free(fs);
-
-	glCompileShader(v);
-	glCompileShader(f);
-
-	p = glCreateProgram();
-	glAttachShader(p, f);
-	glAttachShader(p, v);
-
-	glLinkProgram(p);
-	glUseProgram(p);
-}
-
-void setGoochShader() {
-	char *vs = NULL, *fs = NULL;
-
-	v = glCreateShader(GL_VERTEX_SHADER);
-	f = glCreateShader(GL_FRAGMENT_SHADER);
-
-	vs = textFileRead("gooch.vert");
-	fs = textFileRead("gooch.frag");
-
-	const char * ff = fs;
-	const char * vv = vs;
-
-	glShaderSource(v, 1, &vv, NULL);
-	glShaderSource(f, 1, &ff, NULL);
-
-	free(vs); free(fs);
-
-	glCompileShader(v);
-	glCompileShader(f);
-
-	p = glCreateProgram();
-	glAttachShader(p, f);
-	glAttachShader(p, v);
-
-	glLinkProgram(p);
-	glUseProgram(p);
-}
-
-void setGlossyShader() {
-	char *vs = NULL, *fs = NULL;
-
-	v = glCreateShader(GL_VERTEX_SHADER);
-	f = glCreateShader(GL_FRAGMENT_SHADER);
-
-	vs = textFileRead("gooch.vert");
-	fs = textFileRead("gooch.frag");
-
-	const char * ff = fs;
-	const char * vv = vs;
-
-	glShaderSource(v, 1, &vv, NULL);
-	glShaderSource(f, 1, &ff, NULL);
-
-	free(vs); free(fs);
-
-	glCompileShader(v);
-	glCompileShader(f);
-
-	p = glCreateProgram();
-	glAttachShader(p, f);
-	glAttachShader(p, v);
-
-	glLinkProgram(p);
-	glUseProgram(p);
-}
-
-void setShader(int choice) {
+/*void setShader(int choice) {
 	switch (choice) {
 	case 1:
 		setFragmentShader();
@@ -251,7 +111,7 @@ void setShader(int choice) {
 	default:
 		setFragmentShader();
 	}
-}
+}*/
 
 void processNormalKeys(unsigned char key, int x, int y) {
 
@@ -265,7 +125,7 @@ void processNormalKeys(unsigned char key, int x, int y) {
 	case 'd':
 		rot += 5;
 		break;
-	case '1':
+	/*case '1':
 		setShader(1);
 		break;
 	case '2':
@@ -282,14 +142,14 @@ void processNormalKeys(unsigned char key, int x, int y) {
 		break;
 	case '6':
 		setShader(6);
-		break;
+		break;*/
 	}
 
 	glutPostRedisplay();
 }
 
 
-int main(int argc, char **argv) {
+int main3(int argc, char **argv) {
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
 	glutInitWindowPosition(100,100);
@@ -302,7 +162,7 @@ int main(int argc, char **argv) {
 	glutKeyboardFunc(processNormalKeys);
 
 	glEnable(GL_DEPTH_TEST);
-	glClearColor(1.0,1.0,1.0,1.0);
+	glClearColor(1.0,0.0,0.0,1.0);
 //	glEnable(GL_CULL_FACE);
 
 	glewInit();
@@ -320,7 +180,7 @@ int main(int argc, char **argv) {
 	// 4. Toon Shader
 	// 5. Gooch Shader0
 	// 6. Glossy Shader
-	setShader(1);
+	setFragmentShader();
 
 	glutMainLoop();
 

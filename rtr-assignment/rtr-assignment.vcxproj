@@ -93,7 +93,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>glew32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glew32.lib;freeglut.lib;freeglut_static.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -148,19 +148,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <None Include="base.vert" />
-    <None Include="diffuse.frag" />
-    <None Include="diffuse.vert" />
-    <None Include="glossy.frag" />
-    <None Include="glossy.vert" />
-    <None Include="gooch.frag" />
-    <None Include="gooch.vert" />
     <None Include="gouraud.frag" />
-    <None Include="phong.frag" />
-    <None Include="phong.vert" />
-    <None Include="toon.frag" />
-    <None Include="toon.vert" />
+    <None Include="refraction.frag" />
+    <None Include="refraction.vert" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="cubemap.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="main2.cpp" />
     <ClCompile Include="textfile.cpp" />
